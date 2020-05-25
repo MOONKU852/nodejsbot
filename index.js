@@ -73,7 +73,7 @@ client.on('ready', () => {
       let msg = await message.channel.send("Generating...")
 
       let {body} = await superagent
-      .get(`https://api-to.get-a.life/meme`)
+      .get(`https://apis.duncte123.me/meme`)
       //console.log(body.file)
       if(!{body}) return message.channel.send("I Broke! Try again.")
 
