@@ -102,7 +102,7 @@ client.on('ready', () => {
           let embed = new Discord.RichEmbed()
           .setColor('#40e0d0')
           .setAuthor(`웃긴 밈 대령이오~!`, message.author.displayAvatarURL)
-          .setImage(body.url)
+          .setImage(body.data.image)
           .setTimestamp()
           .setFooter(`두둥탁`)
           message.channel.send(embed)
