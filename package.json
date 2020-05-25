@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "discord.js": "^11.5.1",
+    "fs": "0.0.1-security",
     "get": "^1.4.0",
     "git": "^0.1.5",
     "moment": "^2.20.1",

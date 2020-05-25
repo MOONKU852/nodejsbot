@@ -14,6 +14,28 @@ client.on('ready', () => {
     client.user.setPresence({ game: { name: '~help' }, status: 'online' })
   });
 
+  const fs = require("fs");
+  client.commands = new Discord.Collection();
+  client.aliases = new Discord.Collection();
+
+  fs.readdir("./commands/", (err, files) => {
+
+    if(err) console.log(err)
+
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if(jsfile.length <= 0) {
+      return console.log("[LOGS] Couldn't Find Commands!")
+    }
+
+    jsfile.forEach((f, i) => {
+      let pull = require(`./commands/${f}`);
+      client.commands.set(pull.name, pull);
+      pull.aliases.forEach(alias => {
+        client.aliases.set(alias, pull.name)
+      });
+    });
+  });
+
   client.on("guildMemberAdd", (member) => {
     const guild = member.guild;
     const newUser = member.user;
@@ -63,6 +85,24 @@ client.on('ready', () => {
           .setColor('#40e0d0')
           .setAuthor(`귀여운 강아지 사진 대령이오~!`, message.author.displayAvatarURL)
           .setImage(body.message)
+          .setTimestamp()
+          .setFooter(`두둥탁`)
+          message.channel.send(embed)
+
+          msg.delete();
+    }
+    if(message.content == '~밈') {
+      let msg = await message.channel.send("Generating...")
+
+      let {body} = await superagent
+      .get(`https://api-to.get-a.life/meme`)
+      //console.log(body.file)
+      if(!{body}) return message.channel.send("I Broke! Try again.")
+
+          let embed = new Discord.RichEmbed()
+          .setColor('#40e0d0')
+          .setAuthor(`웃긴 밈 대령이오~!`, message.author.displayAvatarURL)
+          .setImage(body.url)
           .setTimestamp()
           .setFooter(`두둥탁`)
           message.channel.send(embed)
@@ -151,6 +191,8 @@ client.on('ready', () => {
         {name: '봇정보', desc: '두둥탁 봇의 정보를 알려 준다.'},
         {name: '청소', desc: '텍스트 지움'},
         {name: '초대코드', desc: '해당 채널의 초대 코드 표기'},
+        {name: '고양이', desc: '고양이 사진 전송'},
+        {name: '강아지', desc: '강아지 사진 전송'},
       ];
       let commandStr = '';
       let embed = new Discord.RichEmbed()
