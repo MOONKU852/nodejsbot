@@ -32,7 +32,7 @@ client.on('ready', () => {
   });
   
   client.on('message', async message => {
-    if (message.startsWith ('~밴')) {
+    if(message.content == '~밴') {
       if (!message.member.hasPermission("ADMINISTRATOR")) return;
       if (mention == null) return;
       if (message.guild.member(mention).hasPermission("BAN_MEMBERS")) return;
