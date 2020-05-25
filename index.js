@@ -73,14 +73,14 @@ client.on('ready', () => {
       let msg = await message.channel.send("Generating...")
 
       let {body} = await superagent
-      .get(`https://api-to.get-a.life/meme`)
+      .get(`https://apis.duncte123.me/meme`)
       //console.log(body.file)
       if(!{body}) return message.channel.send("I Broke! Try again.")
 
           let embed = new Discord.RichEmbed()
           .setColor('#40e0d0')
           .setAuthor(`웃긴 밈 사진 대령이오~!`, message.author.displayAvatarURL)
-          .setImage(body.url)
+          .setImage(body.data.image)
           .setTimestamp()
           .setFooter(`두둥탁`)
           message.channel.send(embed)
