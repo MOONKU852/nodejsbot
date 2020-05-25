@@ -34,8 +34,8 @@ client.on('ready', () => {
   
   client.on('message', async (message, args) => {
     if(message.content == '~투표') {
-      if(message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`<@${message.author.id}> ` + "명령어를 실행할 권한을 가지고 있지 않습니다.")
-      if(args[0]) return message.channel.send('Proper Usage: <prefix>poll question');
+      if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(`<@${message.author.id}> ` + "명령어를 실행할 권한을 가지고 있지 않습니다.")
+      if(!args[0]) return message.channel.send('Proper Usage: <prefix>poll question');
 
       let embed = new Discord.RichEmbed()
       .setColor('#40e0d0')
@@ -48,7 +48,7 @@ client.on('ready', () => {
 
       await msg.react('✅')
       await msg.react('❎')
-      
+
       message.delete({timeout: 1000});
     }
     if(message.content == '~고양이') {
