@@ -32,16 +32,6 @@ client.on('ready', () => {
   });
   
   client.on('message', async message => {
-    if(message.content == '~밴') {
-      if (!message.member.hasPermission("ADMINISTRATOR")) return;
-      if (mention == null) return;
-      if (message.guild.member(mention).hasPermission("BAN_MEMBERS")) return;
-      let reason = message.content.slice (length + mention.toString().length + 5);
-      message.channel.send (mention.username + " has beed kicked");
-      mention.sendMessage ("You have been kicked because: \n" + reason).then (d_msg => {
-        message.guild.member(mention).kick(reason);
-      })
-    }
     if(message.content == '~봇정보') {
       let embed = new Discord.RichEmbed()
       let img = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
@@ -122,7 +112,6 @@ client.on('ready', () => {
         {name: '규칙', desc: '서버 규칙을 알려준다.'},
         {name: '서버매니저', desc: '서버 매니저가 하는 일과 얻는 방법을 알려준다.'},
         {name: '봇정보', desc: '두둥탁 봇의 정보를 알려 준다.'},
-        {name: '핑', desc: '현재 나의 디스코드 핑을 알려준다.'},
         {name: '청소', desc: '텍스트 지움'},
         {name: '초대코드', desc: '해당 채널의 초대 코드 표기'},
       ];
