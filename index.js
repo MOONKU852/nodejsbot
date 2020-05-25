@@ -79,12 +79,12 @@ client.on('ready', () => {
           let embed = new Discord.RichEmbed()
           .setColor('#40e0d0')
           .setAuthor(`웃긴 밈 대령이오~!`, message.author.displayAvatarURL)
-          .setImage(body.data.image)
+          .setImage(body.image)
           .setTimestamp()
           .setFooter(`두둥탁`)
 
-          if(body.data.title) {
-            embed.setTitle(body.data.title).setURL(bodt.data.url)
+          if(body.title) {
+            embed.setTitle(body.title).setURL(body.url)
           }
           message.channel.send(embed)
 
