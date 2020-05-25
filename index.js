@@ -33,21 +33,6 @@ client.on('ready', () => {
   });
   
   client.on('message', async message => {
-    if(message.content == '~사용자정보') {
-      let embed = new Discord.RichEmbed()
-      .setColor('#40e0d0')
-      .setTitle("사용자 정보")
-      .setThumbnail(message.guild.iconURL)
-      .setAuthor(`${message.author.username} Info`, message.author.displayAvatarURL)
-      .addField("**Username:**", `${message.author.username}`, true)
-      .addField("**Discriminator:**", `${message.author.discriminator}`, true)
-      .addField("**ID:**", `${message.author.id}`, true)
-      .addField("**Status:**", `${message.author.presence.status}`, true)
-      .addField("**Created At:**", `${message.author.createdAt}`, true)
-      .addField(`두둥탁`)
-      .setTimestamp();
-      message.channel.send(embed)
-    }
     if(message.content == '~고양이') {
       let msg = await message.channel.send("Generating...")
 
@@ -58,8 +43,26 @@ client.on('ready', () => {
 
           let embed = new Discord.RichEmbed()
           .setColor('#40e0d0')
-          .setAuthor(`TestBot CATS!`, message.guild.iconURL)
+          .setAuthor(`깜찍한 고양이 사진 대령이오~!`, message.author.displayAvatarURL)
           .setImage(body.file)
+          .setTimestamp()
+          .setFooter(`두둥탁`)
+          message.channel.send(embed)
+
+          msg.delete();
+    }
+    if(message.content == '~강아지') {
+      let msg = await message.channel.send("Generating...")
+
+      let {body} = await superagent
+      .get(`https://dog.ceo/api/breeds/image/random`)
+      //console.log(body.file)
+      if(!{body}) return message.channel.send("I Broke! Try again.")
+
+          let embed = new Discord.RichEmbed()
+          .setColor('#40e0d0')
+          .setAuthor(`귀여운 강아지 사진 대령이오~!`, message.author.displayAvatarURL)
+          .setImage(body.message)
           .setTimestamp()
           .setFooter(`두둥탁`)
           message.channel.send(embed)
