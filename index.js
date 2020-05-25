@@ -32,6 +32,25 @@ client.on('ready', () => {
   });
   
   client.on('message', async message => {
+    if(message.content.startsWith('~밴')) {
+      if(checkPermission(message)) return
+      const user = message.mentions.users.first();
+      if (user) {
+        const member = message.guild.member(user);
+
+        if (member) {
+          member.ban({ression: 'you were bad!'}).then(() =>{
+            message.reply(`WE BANNED THE PLAYER! ${user.tag}`)
+          })
+        } else {
+          message.reply("That user isn\'t in the this guild")
+        }
+      } else {
+        message.reply('You need to specify a person!')
+      }
+
+      break;
+  }
     if(message.content == '~봇정보') {
       let embed = new Discord.RichEmbed()
       let img = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
