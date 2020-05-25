@@ -31,13 +31,7 @@ client.on('ready', () => {
     byeChannel.send(`<@${deleteUser.id}> ${byeChannelComment}\n`);
   });
   
-  client.on('message', (message) => {
-    if(message.author.bot) return;
-  
-    if(message.content == 'ping') {
-      return message.reply('pong');
-    }
-  
+  client.on('message', async message => {
     if(message.content == '~봇정보') {
       let embed = new Discord.RichEmbed()
       let img = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
