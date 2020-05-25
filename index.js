@@ -74,7 +74,6 @@ client.on('ready', () => {
 
       let {body} = await superagent
       .get(`https://apis.duncte123.me/meme`)
-      //console.log(body.file)
       if(!{body}) return message.channel.send("I Broke! Try again.")
 
           let embed = new Discord.RichEmbed()
@@ -83,6 +82,10 @@ client.on('ready', () => {
           .setImage(body.data.image)
           .setTimestamp()
           .setFooter(`두둥탁`)
+
+          if(body.data.title) {
+            embed.setTitle(body.data.title).setURL(bodt.data.url)
+          }
           message.channel.send(embed)
 
           msg.delete();
