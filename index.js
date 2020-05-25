@@ -14,28 +14,6 @@ client.on('ready', () => {
     client.user.setPresence({ game: { name: '~help' }, status: 'online' })
   });
 
-  const fs = require("fs");
-  client.commands = new Discord.Collection();
-  client.aliases = new Discord.Collection();
-
-  fs.readdir("./commands/", (err, files) => {
-
-    if(err) console.log(err)
-
-    let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length <= 0) {
-      return console.log("[LOGS] Couldn't Find Commands!")
-    }
-
-    jsfile.forEach((f, i) => {
-      let pull = require(`./commands/${f}`);
-      client.commands.set(pull.name, pull);
-      pull.aliases.forEach(alias => {
-        client.aliases.set(alias, pull.name)
-      });
-    });
-  });
-
   client.on("guildMemberAdd", (member) => {
     const guild = member.guild;
     const newUser = member.user;
