@@ -32,6 +32,24 @@ client.on('ready', () => {
   });
   
   client.on('message', async message => {
+    if(message.content == '~고양이') {
+      let msg = await message.channel.send("Generating...")
+
+      let {body} = await superagent
+      .get(`http://aws.random.cat/meow`)
+      //console.log(body.file)
+      if(!{body}) return message.channel.send("I Broke! Try again.")
+
+          let embed = new Discord.RichEmbed()
+          .setColor('#40e0d0')
+          .setAuthor(`TestBot CATS!`, message.guild.iconURL)
+          .setImage(body.file)
+          .setTimestamp()
+          .setFooter(`두둥탁`)
+          message.channel.send(embed)
+
+          msg.delete();
+    }
     if(message.content == '~봇정보') {
       let embed = new Discord.RichEmbed()
       let img = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
