@@ -45,7 +45,7 @@ client.on('ready', () => {
       .addField("**Status:**", `${message.author.presence.status}`, true)
       .addField("**Created At:**", `${message.author.createdAt}`, true)
       .addField(`두둥탁`)
-      .setTimestamp
+      .setTimestamp();
       message.channel.send(embed)
     }
     if(message.content == '~고양이') {
