@@ -33,6 +33,19 @@ client.on('ready', () => {
   });
   
   client.on('message', async message => {
+    if(message.content == '~투표') {
+      if(message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`<@${message.author.id}> ` + "명령어를 실행할 권한을 가지고 있지 않습니다.")
+      let embed = new Discord.RichEmbed()
+      .setColor('#40e0d0')
+      .setFooter('React to vote.')
+      .setTimestamp()
+      .setTitle(`Poll Created By ${message.author.username}`);
+
+      let msg = await message.channel.send(embed);
+      await msg.react('✅')
+      await msg.react('❎')
+      message.delete({timeout: 1000});
+    }
     if(message.content == '~고양이') {
       let msg = await message.channel.send("Generating...")
 
@@ -63,24 +76,6 @@ client.on('ready', () => {
           .setColor('#40e0d0')
           .setAuthor(`귀여운 강아지 사진 대령이오~!`, message.author.displayAvatarURL)
           .setImage(body.message)
-          .setTimestamp()
-          .setFooter(`두둥탁`)
-          message.channel.send(embed)
-
-          msg.delete();
-    }
-    if(message.content == '~밈') {
-      let msg = await message.channel.send("Generating...")
-
-      let {body} = await superagent
-      .get(`https://apis.duncte123.me/meme`)
-      //console.log(body.file)
-      if(!{body}) return message.channel.send("I Broke! Try again.")
-
-          let embed = new Discord.RichEmbed()
-          .setColor('#40e0d0')
-          .setAuthor(`웃긴 밈 사진 대령이오~!`, message.author.displayAvatarURL)
-          .setImage(body.data.image)
           .setTimestamp()
           .setFooter(`두둥탁`)
           message.channel.send(embed)
