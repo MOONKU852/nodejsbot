@@ -14,13 +14,13 @@ exports.run = (client, message, args) => {
     let nxtLvlXp = curlvl * 300;
     let difference = nxtLvlXp - curxp;
 
-    let lvlEmbed = new Discord.RichEmbed()
+    let embed = new Discord.RichEmbed()
     .setAuthor(message.author.username)
     .setColor('#40e0d0')
     .addField("Level", curlvl, true)
     .addField("XP", curxp, true)
     .setFooter(`${difference} XP til level up`, message.author.displayAvatarURL);
 
-    message.channel.send(lvlEmbed).then(msg => {msg.delete(5000)});
+    message.channel.send(embed);
 
 }
