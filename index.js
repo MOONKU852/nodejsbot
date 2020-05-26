@@ -167,6 +167,7 @@ client.on('ready', () => {
         {name: 'prefix', desc: '~'},
         {name: 'DM공지', desc: 'dm으로 전체 공지 보내기'},
         {name: 'DM공지2', desc: 'dm으로 전체 embed 형식으로 공지 보내기'},
+        {name: '투표', desc: '투표 시스템'},
         {name: 'VIP', desc: 'VIP의 혜택과 얻는 방법을 알려준다.'},
         {name: '규칙', desc: '서버 규칙을 알려준다.'},
         {name: '관리자', desc: '관리자가 하는 일과 얻는 방법을 알려준다.'},
