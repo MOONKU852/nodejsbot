@@ -127,14 +127,14 @@ client.on('ready', () => {
         message.channel.send(embed)
     }
 
-    if(message.content == '~서버매니저') {
+    if(message.content == '~관리자') {
       let embed = new Discord.RichEmbed()
         .setColor('#40e0d0')
-        .setTitle('서버매니저 관련 정보')
+        .setTitle('관리자 관련 정보')
         .setThumbnail(message.author.displayAvatarURL)
         .setAuthor(`${message.author.username}`, message.author.displayAvatarURL)
-        .addField("**서버 매니저 얻는방법**", '서버 매니저는 아직 안뽑는 중입니다.')
-        .addField("**서버 매니저가 하는 일**", '서버 매니저는 말 그대로 서버를 관리하는 사람이며 저희 [문쿠 커뮤니티]를\n새롭고 예쁘게 꾸며나갈 사람 중 하나입니다!', true)
+        .addField("**관리자 얻는방법**", '관리자는 아직 안뽑는 중입니다.')
+        .addField("**관리자가 하는 일**", '관리자는 말 그대로 서버를 관리하는 사람이며 저희 [문쿠 커뮤니티]를\n새롭고 예쁘게 꾸며나갈 사람 중 하나입니다!', true)
         .setFooter('두둥탁')
         .setTimestamp();
         message.channel.send(embed)
@@ -147,7 +147,7 @@ client.on('ready', () => {
         {name: 'DM공지2', desc: 'dm으로 전체 embed 형식으로 공지 보내기'},
         {name: 'VIP', desc: 'VIP의 혜택과 얻는 방법을 알려준다.'},
         {name: '규칙', desc: '서버 규칙을 알려준다.'},
-        {name: '서버매니저', desc: '서버 매니저가 하는 일과 얻는 방법을 알려준다.'},
+        {name: '관리자', desc: '관리자가 하는 일과 얻는 방법을 알려준다.'},
         {name: '봇정보', desc: '두둥탁 봇의 정보를 알려 준다.'},
         {name: '청소', desc: '텍스트 지움'},
         {name: '초대코드', desc: '해당 채널의 초대 코드 표기'},
@@ -220,7 +220,7 @@ client.on('ready', () => {
         let contents = message.content.slice('~DM공지'.length);
         message.member.guild.members.array().forEach(x => {
           if(x.user.bot) return;
-          x.user.send(`공지 보낸 사람: <@${message.author.id}> 공지: ${contents}`);
+          x.user.send(`공지: ${contents}`);
         });
     
         return message.reply('공지를 DM으로 전송했습니다!');
