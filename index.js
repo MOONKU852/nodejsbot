@@ -36,24 +36,6 @@ client.on('ready', () => {
     client.user.setPresence({ game: { name: '~help' }, status: 'online' })
   });
 
-  client.on('guildMemberAdd', member => {
-    if (member.guild.id !== serverStats.guildID) return;
-    client.channels.get(serverStats.totalUserID).setName(`Total Users : ${member.guild.memberCound}`);
-    client.channels.get(serverStats.memberCountID).setName(`Member Count : ${member.guild.members.filter(m => !m.user.bot).size}`);
-    client.channels.get(serverStats.botCountID).setName(`Bot Count : ${member.guild.members.filter(m => m.user.bot).size}`);
-
-  });
-
-  client.on('guildMemberRemove', member => {
-    if (member.guild.id !== serverStats.guildID) return;
-    client.channels.get(serverStats.totalUserID).setName(`Total Users : ${member.guild.memberCound}`);
-    client.channels.get(serverStats.memberCountID).setName(`Member Count : ${member.guild.members.filter(m => !m.user.bot).size}`);
-    client.channels.get(serverStats.botCountID).setName(`Bot Count : ${member.guild.members.filter(m => m.user.bot).size}`);
-
-  });
-
-
-
   client.on("guildMemberAdd", (member) => {
     const guild = member.guild;
     const newUser = member.user;
