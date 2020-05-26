@@ -23,7 +23,7 @@ exports.run = (client, message, args, ops) => {
 
         collector.once('collect', function(m) {
 
-            let commandFile = require(`./play.js`);
+            let commandFile = require(`./플레이.js`);
             commandFile.run(client, message, [this.videos[parseInt(m.content)-1].url], ops);
 
         });
