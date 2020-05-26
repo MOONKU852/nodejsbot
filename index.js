@@ -203,7 +203,7 @@ client.on('ready', () => {
           .setFooter(`두둥탁`)
           .setTimestamp()
     
-        embed.addField(contents);
+        embed.addField('공지: ', contents);
     
         message.member.guild.members.array().forEach(x => {
           if(x.user.bot) return;
@@ -220,7 +220,7 @@ client.on('ready', () => {
         let contents = message.content.slice('~DM공지'.length);
         message.member.guild.members.array().forEach(x => {
           if(x.user.bot) return;
-          x.user.send(`<@${message.author.id}> ${contents}`);
+          x.user.send(`공지 보낸 사람: <@${message.author.id}> 공지: ${contents}`);
         });
     
         return message.reply('공지를 DM으로 전송했습니다!');
