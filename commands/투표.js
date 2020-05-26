@@ -13,8 +13,8 @@ exports.run = async (client, message, args, tools) => {
 
     let msg = await message.channel.send(embed);
 
-    await msg.react('✅');
-    await msg.react('❎');
+    await message.react('✅');
+    await message.react('❎');
 
     message.delete({timeout: 1000});
 
