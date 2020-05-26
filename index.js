@@ -10,12 +10,7 @@ const byeChannelName = "😥ㅣ손님-나가셨당";
 const welcomeChannelComment = "님 저희 [문쿠 커뮤니티]에 오신 걸 환영합니다!:hugging: 규칙방 에 있는 규칙 읽어주세요!";
 const byeChannelComment = "님 저희 [문쿠 커뮤니티]를 떠나셨군요. 안녕히 가세요.:disappointed_relieved:";
 const prefix = '~';
-let xp = require('./xp.json');
 const ownerID = '617059154942623825';
-
-fs.readdir("./commands/", (err, files) => {
-  
-})
   
 client.on('message', message => {
   let args = message.content.slice(prefix.length).trim().split(' ');
@@ -40,33 +35,6 @@ client.on('message', message => {
 client.on('ready', () => {
     console.log('켰다.');
     client.user.setPresence({ game: { name: '~help' }, status: 'online' })
-  });
-
-  let xpAdd = Math.floor(Math.random() * 7) + 8;
-  console.log(xpAdd);
-
-  if(!xp[message.author.id]){
-    xp[message.author.id] = {
-      xp: 0,
-      level: 1
-    };
-  }
-
-  let curxp = xp[message.author.id].xp;
-  let curlvl = xp[message.author.id].level;
-  let nxtLvl = xp[message.author.id].level * 300;
-  xp[message.author.id].xp = curxp + xpAdd;
-  if(nxtLvl <= xp[message.author.id].xp){
-    xp[message.author.id].level = curlvl + 1;
-    let lvlup = new Discord.RichEmbed()
-    .setTitle("레벨 업!")
-    .setColor('#40e0d0')
-    .addField("New Level", curlvl + 1);
-
-    message.channel.send(lvlup).then(msg => {msg.delete(5000)});
-  }
-  fs.writeFile('./xp.json', JSON.stringify(xp), (err) => {
-    if(err) console.log(err)
   });
 
   client.on("guildMemberAdd", (member) => {
