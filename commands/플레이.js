@@ -16,7 +16,7 @@ exports.run = async (client, message, args, ops) => {
 
     let connection = await message.member.voiceChannel.join();
 
-    let dispatcher = await connection.playStream(ytdl(args[0], { filter: 'audioonly'}));
+    let dispatcher = await connection.playStream(ytdl(args[0], { filter: 'audioonly' }));
 
     message.channel.send(`Now playing: ${info.title}`);
 
