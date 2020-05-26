@@ -1,11 +1,13 @@
-module.exports={
-    name: "say",
-    description: "Get the bot to say what ever you want!",
-    usage: "<msg>",
-    run: async(bot,message,args)=>{
-        let MSG = message.content.split(`${bot.prefix}say `).join("")
-        if(!MSG)return message.channel.send(`You did not specify your message to send!`)
-        message.channel.send(MSG)
-        message.delete()
-    }
+const Discord = require('discord.js');
+
+exports.run = async (client, message, args) => {
+    message.delete()
+    let desc = args.join(" ")
+    const embed = new Discord.RichEmbed()
+    .setAuthor(`This Message has Been sent By ${message.author.username}`)
+    .setColor(`#40e0d0`)
+    .setFooter('두둥탁')
+    .setTimestamp()
+    .setDescription(desc);
+    message.channel.send(embed);
 }
