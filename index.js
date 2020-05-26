@@ -13,6 +13,10 @@ const prefix = '~';
 let xp = require('./xp.json');
 const ownerID = '617059154942623825';
 
+fs.readdir("./commands/", (err, files) => {
+  
+})
+  
 client.on('message', message => {
   let args = message.content.slice(prefix.length).trim().split(' ');
   let cmd = args.shift().toLowerCase();
