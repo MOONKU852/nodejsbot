@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const msg = client.snipes.get(message.channel.id);
     if (!msg) return message.reply("no recently deleted messages!");
 
