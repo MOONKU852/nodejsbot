@@ -179,7 +179,6 @@ client.on('ready', () => {
         {name: '강아지', desc: '강아지 사진 전송'},
         {name: '게이', desc: '자신이 게이일 확률을 알려줌(놀이용)'},
         {name: '말해', desc: '봇이 따라 말함'},
-        {name: 'snipe', desc: '지운 메세지를 다시 볼수 있음'},
       ];
       let commandStr = '';
       let embed = new Discord.RichEmbed()
