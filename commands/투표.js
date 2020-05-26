@@ -11,7 +11,7 @@ exports.run = async (client, message, args, tools) => {
     .setDescription(args.join(' '))
     .setTitle(`Poll Created By ${message.author.username}`);
 
-    let msg = await message.channel.send(embed);
+    let message = await message.channel.send(embed);
 
     await message.react('✅');
     await message.react('❎');
