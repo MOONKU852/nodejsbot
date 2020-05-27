@@ -56,7 +56,6 @@ client.on('ready', () => {
   
     byeChannel.send(`<@${deleteUser.id}> ${byeChannelComment}\n`);
   });
-  
   client.on('message', async (message, args) => {
     if(message.content == '~고양이') {
       let msg = await message.channel.send("Generating...")
