@@ -52,7 +52,7 @@ client.on('ready', () => {
     const deleteUser = member.user;
     const byeChannel = guild.channels.find(channel => channel.name == byeChannelName);
   
-    byeChannel.send(`${deleteUser.name} ${byeChannelComment}\n`);
+    byeChannel.send(`<@${deleteUser.id}> ${byeChannelComment}\n`);
   });
   
   client.on('message', async (message, args) => {
