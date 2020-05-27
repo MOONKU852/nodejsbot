@@ -5,20 +5,5 @@
   "main": "index.js",
   "scripts": {
     "r": "node index.js"
-  },
-  "dependencies": {
-    "@discordjs/opus": "^0.3.2",
-    "discord.js": "^11.6.4",
-    "ffmpeg": "0.0.4",
-    "fluent-ffmpeg": "^2.1.2",
-    "fs": "0.0.1-security",
-    "get": "^1.4.0",
-    "git": "^0.1.5",
-    "moment": "^2.20.1",
-    "moment-duration-format": "^2.2.1",
-    "moment-timezone": "^0.5.28",
-    "opusscript": "0.0.7",
-    "superagent": "^5.2.2",
-    "ytdl-core": "^2.1.5"
   }
 }
